@@ -19,12 +19,12 @@ Functional testing and a basic external interface are in scope and need to be te
 ## 1.3 Definitions, Acronyms, and Abbrevations 
 | Abbreviation | Word     |
 |--------------|----------|
-| M            | Manager  |
-| C            | Client   |
-| P            | Provider |
-| T            | Testers  |
-| S            |Stakeholder|
+| A            | Admin    |
+| D            | Distributor|
 | D            | Developer|
+| S            |Stakeholder|
+| T            | Tester   |  
+| V            | Vendor   |
 ## 2. Requirements
 
 ### 2.1 Roles Description
