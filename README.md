@@ -14,7 +14,17 @@ The purpose of this document is to outline the requirements for the app that the
 The scope of this project is limited to the testing of the features described in the succeding sections of this document.
 Non-functional testing like stress, performance is beyond scope of this project.
 Automation testing is beyond scope.
-Functional testing and a basic external interface are in scope and need to be teseted.
+Functional testing and a basic external interface are in scope and need to be tested.
+
+## 1.3 Definitions, Acronyms, and Abbrevations 
+| Abbreviation | Word     |
+|--------------|----------|
+| M            | Manager  |
+| C            | Client   |
+| P            | Provider |
+| T            | Testers  |
+| S            |Stakeholder|
+| D            | Developer|
 ## 2. Requirements
 
 ### 2.1 Roles Description
