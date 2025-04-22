@@ -53,6 +53,7 @@ Functional testing and a basic external interface are in scope and need to be te
 **Como** vendedor,  
 **quiero** buscar productos por nombre o código  
 **para** acceder rápidamente a la información del precio.
+
 **Criterios de Aceptación**
 
 - **Escenario 1 (Positivo):**  
@@ -78,3 +79,16 @@ Functional testing and a basic external interface are in scope and need to be te
 - Actualización automática de precios al abrir la pantalla o tras un intervalo predeterminado.
 
 ---
+
+#### User Story 3: Cargar listas de precios
+
+**Como** distribuidor,  
+**quiero** poder cargar las nuevas listas de precios  
+**para** mantener a mis vendedores actualizados.
+
+**Criterios de Aceptación**
+
+- Poder subir archivos de lista de precios en formatos como Excel (.xlsx, .xls) y CSV.  
+- Validación de formato y datos (p. ej. columnas requeridas: código, nombre, precio).  
+- Mostrar un mensaje de “Actualización exitosa” o, en caso de error, “Error al procesar el archivo” con detalles.  
+- Registro de fecha y usuario que realizó la carga.
