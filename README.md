@@ -46,3 +46,35 @@ Functional testing and a basic external interface are in scope and need to be te
 | **Tester**   | - Execute functional test cases  <br> - Report bugs  <br> - Verify bug fixes             |
 | **Developer**| - Develop backend API  <br> - Implement front-end components  <br> - Fix issues          |
 | **Distributor** | - Feed price updates to the system  <br> - Ensure data accuracy                      |
+
+### 2.3 User Stories 
+#### User Story 1: Buscar productos por nombre o código
+
+**Como** vendedor,  
+**quiero** buscar productos por nombre o código  
+**para** acceder rápidamente a la información del precio.
+**Criterios de Aceptación**
+
+- **Escenario 1 (Positivo):**  
+  **Dado que** el vendedor está en la pantalla de búsqueda,  
+  **cuando** introduce un código o nombre válido y presiona buscar,  
+  **entonces** se muestra la información del producto y su precio.
+- **Escenario 2 (Negativo):**  
+  **Dado que** el vendedor introduce un código incorrecto,  
+  **cuando** presiona buscar,  
+  **entonces** se muestra un mensaje de “Producto no encontrado”.
+
+---
+
+#### User Story 2: Ver precios más recientes
+
+**Como** vendedor,  
+**quiero** tener la seguridad de que estoy viendo los precios más recientes  
+**para** evitar vender con precios desactualizados.
+
+**Criterios de Aceptación**
+
+- Mostrar la fecha de última actualización junto al precio.
+- Actualización automática de precios al abrir la pantalla o tras un intervalo predeterminado.
+
+---
