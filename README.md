@@ -154,7 +154,10 @@ Resultado esperado: Se muestra error con detalle del problema
 
 **Nota:** Esta sección será completada en futuras actualizaciones del documento.
 
----
+La aplicación está compuesta por una base de datos central y dos interfaces diferenciadas según el perfil de usuario. Por un lado, se desarrollará una **aplicación web exclusiva para administradores**, quienes serán responsables de cargar y actualizar las listas de precios. Por otro lado, se implementará una **aplicación móvil destinada a los vendedores**, diseñada para facilitar la consulta rápida y actualizada de precios durante sus visitas a clientes.
+
+Dado que la web app será utilizada únicamente por uno o dos administradores, y considerando que la API pública estará orientada a la distribución de la lista de precios para los vendedores, **no resulta necesario implementar un sistema complejo de autenticación y gestión de usuarios para la interfaz administrativa**. En este sentido, se optará por desarrollar una **API separada, restringida y segura**, exclusivamente para la administración de precios, evitando así exponer funcionalidades innecesarias a la red pública.
+
 
 #### 3.2 Definición de API
 
