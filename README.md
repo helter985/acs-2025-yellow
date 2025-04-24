@@ -173,16 +173,16 @@ La especificación completa de la API está definida utilizando el formato **Ope
 
 **Endpoints principales:**
 
-- `GET /products/search`  
+- `GET /products?search={name}`  
   Permite a los vendedores buscar productos por nombre o código.  
-  **Parámetros esperados:** `name` o `code`  
+  **Parámetro:** `name`
+  **Respuesta:** Listado de productos y precio actual
+
+- `GET /products/{code}`
+  Permite a los vendedores buscar productos por nombre o código.  
+  **Parámetro:** `code`  
   **Respuesta:** Información del producto y precio actual
 
-- `POST /price-lists/upload`  
-  Permite a los distribuidores subir nuevas listas de precios.  
-  **Formato permitido:** `.xlsx`, `.xls`, `.csv`  
-  **Validaciones:** estructura del archivo, columnas requeridas (`code`, `name`, `price`), tipo de datos  
-  **Respuesta:** Mensaje de éxito o detalle de errores
 
 **Manejo de errores:**  
 Las respuestas incluirán códigos HTTP estándar y mensajes detallados en caso de errores (por ejemplo, `400 Bad Request`, `500 Internal Server Error`).
