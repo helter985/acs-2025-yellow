@@ -102,7 +102,7 @@ Precondiciones: El usuario está en la pantalla de búsqueda
 
 Pasos:
 Ingresar un nombre o código válido en el campo de búsqueda
-Presionar el botón “Buscar”
+Presionar el botón “Buscar”.
 Entrada: "123ABC" o "Coca Cola"
 Resultado esperado: Se muestra la información del producto con su precio
 
