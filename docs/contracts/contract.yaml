@@ -95,6 +95,50 @@ components:
 security:
   - bearerAuth: []
 paths:
+  /products/{product_id}:
+    get:
+      summary: Get a product by its unique identifier
+      description: Retrieves a specific product by its product_id
+      operationId: getProductById
+      tags:
+        - Products
+      parameters:
+        - name: product_id
+          in: path
+          description: Unique identifier of the product
+          required: true
+          schema:
+            type: string
+            example: "123ABC"
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "success"
+                  timestamp:
+                    type: string
+                    format: date-time
+                    example: "2025-04-24T14:30:00Z"
+                  data:
+                    $ref: '#/components/schemas/Product'
+        '401':
+          description: Unauthorized - Invalid or missing token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found - Product with the specified identifier does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
   /products/search:
     get:
       summary: Search products by code or name
@@ -106,10 +150,17 @@ paths:
         - name: query
           in: query
           description: Product code or name to search for
-          required: true
+          required: false
           schema:
             type: string
             example: "123ABC"
+        - name: name
+          in: query
+          description: Filter products by name
+          required: false
+          schema:
+            type: string
+            example: "Cola"
         - name: limit
           in: query
           description: Maximum number of results to return
@@ -121,11 +172,13 @@ paths:
             maximum: 50
       responses:
         '200':
-          description: Successful search
+          description: Successful search with results found
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProductSearchResponse'
+        '204':
+          description: No Content - The collection exists but no products match the filter criteria
         '400':
           description: Bad request - Missing or invalid parameters
           content:
@@ -134,12 +187,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
         '401':
           description: Unauthorized - Invalid or missing token
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '404':
-          description: Not found - No products match the query
           content:
             application/json:
               schema:
