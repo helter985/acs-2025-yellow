@@ -92,3 +92,59 @@ Functional testing and a basic external interface are in scope and need to be te
 - Validación de formato y datos (p. ej. columnas requeridas: código, nombre, precio).  
 - Mostrar un mensaje de “Actualización exitosa” o, en caso de error, “Error al procesar el archivo” con detalles.  
 - Registro de fecha y usuario que realizó la carga.
+
+
+### 2.4 Test cases
+
+####  User Story 1: Buscar productos por nombre o código
+TestCase-1.1 - Búsqueda exitosa por nombre o código
+Precondiciones: El usuario está en la pantalla de búsqueda
+
+Pasos:
+Ingresar un nombre o código válido en el campo de búsqueda
+Presionar el botón “Buscar”
+Entrada: "123ABC" o "Coca Cola"
+Resultado esperado: Se muestra la información del producto con su precio
+
+TestCase-1.2 - Búsqueda con código inválido
+Precondiciones: El usuario está en la pantalla de búsqueda
+
+Pasos:
+Ingresar un código inválido
+Presionar el botón “Buscar”
+Entrada: "ZZZ000"
+Resultado esperado: Se muestra mensaje “Producto no encontrado”
+
+
+#### User Story 2: Ver precios más recientes
+TestCase-2.1 - Mostrar fecha de última actualización
+Precondiciones: El usuario visualiza un producto
+
+Pasos:
+Ingresar al detalle de producto
+Resultado esperado: Se muestra la fecha de última actualización del precio
+
+TestCase-2.2 - Validar actualización automática
+Precondiciones: La lista de precios fue actualizada en el servidor
+
+Pasos:
+Abrir la app con conexión a Internet
+Esperar a que se cargue la información
+Resultado esperado: Se muestran los precios actualizados automáticamente
+
+
+#### User Story 3: Cargar listas de precios
+TestCase-3.1 - Subir lista de precios (formato válido)
+Precondiciones: El usuario tiene acceso de administrador
+
+Pasos:
+Subir archivo Excel válido
+Presionar “Cargar”
+Resultado esperado: Mensaje “Lista cargada exitosamente”
+
+TestCase-3.2 - Subir lista de precios (formato inválido)
+
+Pasos:
+Subir un archivo con formato incorrecto o datos faltantes
+Resultado esperado: Se muestra error con detalle del problema
+
