@@ -148,3 +148,38 @@ Pasos:
 Subir un archivo con formato incorrecto o datos faltantes
 Resultado esperado: Se muestra error con detalle del problema
 
+### 3. Technical Specifications
+
+#### 3.1 Arquitectura del Sistema
+
+**Nota:** Esta sección será completada en futuras actualizaciones del documento.
+
+---
+
+#### 3.2 Definición de API
+
+El sistema PricePulse expone una API RESTful que permite:
+
+- A los **vendedores**, buscar productos por código o nombre y visualizar precios actualizados en tiempo real.  
+- A los **distribuidores**, subir nuevas listas de precios para mantener la información actualizada.
+
+La especificación completa de la API está definida utilizando el formato **OpenAPI (Swagger)** y puede consultarse en el siguiente documento: **[PricePulse API Contract]**.
+
+**Endpoints principales:**
+
+- `GET /products/search`  
+  Permite a los vendedores buscar productos por nombre o código.  
+  **Parámetros esperados:** `name` o `code`  
+  **Respuesta:** Información del producto y precio actual
+
+- `POST /price-lists/upload`  
+  Permite a los distribuidores subir nuevas listas de precios.  
+  **Formato permitido:** `.xlsx`, `.xls`, `.csv`  
+  **Validaciones:** estructura del archivo, columnas requeridas (`code`, `name`, `price`), tipo de datos  
+  **Respuesta:** Mensaje de éxito o detalle de errores
+
+**Manejo de errores:**  
+Las respuestas incluirán códigos HTTP estándar y mensajes detallados en caso de errores (por ejemplo, `400 Bad Request`, `500 Internal Server Error`).
+
+Para más detalles sobre los parámetros de las peticiones, formatos de respuesta y ejemplos de uso, consultar el contrato de la API mencionado anteriormente.
+

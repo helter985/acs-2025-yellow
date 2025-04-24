@@ -1,0 +1,200 @@
+openapi: 3.0.4
+info:
+  title: PricePulse API
+  description: API for accessing real-time product pricing information
+  version: 1.0.0
+  contact:
+    name: PricePulse Support
+    email: support@pricepulse.com
+servers:
+  - url: https://api.pricepulse.com/v1
+    description: Production server
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    Product:
+      type: object
+      properties:
+        product_id:
+          type: string
+          example: "123ABC"
+        name:
+          type: string
+          example: "Coca Cola 2L"
+        price:
+          type: number
+          format: float
+          example: 2.50
+        last_updated:
+          type: string
+          format: date-time
+          example: "2025-04-24T10:15:30Z"
+      required:
+        - product_id
+        - name
+        - price
+        - last_updated
+    ProductSearchResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: "success"
+        timestamp:
+          type: string
+          format: date-time
+          example: "2025-04-24T14:30:00Z"
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: "error"
+        message:
+          type: string
+          example: "Product not found"
+        details:
+          type: object
+          additionalProperties: true
+    PriceListUploadResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: "success"
+        timestamp:
+          type: string
+          format: date-time
+          example: "2025-04-24T14:35:00Z"
+        message:
+          type: string
+          example: "Price list uploaded successfully"
+        details:
+          type: object
+          properties:
+            updated_products:
+              type: integer
+              example: 150
+            skipped_products:
+              type: integer
+              example: 2
+            upload_id:
+              type: string
+              example: "upl_12345"
+            uploaded_by:
+              type: string
+              example: "distributor@example.com"
+security:
+  - bearerAuth: []
+paths:
+  /products/search:
+    get:
+      summary: Search products by code or name
+      description: Allows vendors to search for products and retrieve current prices
+      operationId: searchProducts
+      tags:
+        - Products
+      parameters:
+        - name: query
+          in: query
+          description: Product code or name to search for
+          required: true
+          schema:
+            type: string
+            example: "123ABC"
+        - name: limit
+          in: query
+          description: Maximum number of results to return
+          required: false
+          schema:
+            type: integer
+            default: 10
+            minimum: 1
+            maximum: 50
+      responses:
+        '200':
+          description: Successful search
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductSearchResponse'
+        '400':
+          description: Bad request - Missing or invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized - Invalid or missing token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found - No products match the query
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /price-lists/upload:
+    post:
+      summary: Upload a new price list
+      description: Allows distributors to upload new price lists to update the system
+      operationId: uploadPriceList
+      tags:
+        - Price Lists
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: Excel (.xlsx, .xls) or CSV file containing price list data
+                description:
+                  type: string
+                  description: Description of the price list update
+              required:
+                - file
+      responses:
+        '200':
+          description: Successful upload
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PriceListUploadResponse'
+        '400':
+          description: Bad request - Missing file or invalid file format
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized - Invalid or missing token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden - Insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '413':
+          description: Payload Too Large - File exceeds maximum size limit
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
