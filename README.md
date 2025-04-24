@@ -159,6 +159,9 @@ La aplicación está compuesta por una base de datos central y dos interfaces di
 Dado que la web app será utilizada únicamente por uno o dos administradores, y considerando que la API pública estará orientada a la distribución de la lista de precios para los vendedores, **no resulta necesario implementar un sistema complejo de autenticación y gestión de usuarios para la interfaz administrativa**. En este sentido, se optará por desarrollar una **API separada, restringida y segura**, exclusivamente para la administración de precios, evitando así exponer funcionalidades innecesarias a la red pública.
 
 
+![Architecture diagram](./system_architecture.jpg)
+
+
 #### 3.2 Definición de API
 
 El sistema PricePulse expone una API RESTful que permite:
