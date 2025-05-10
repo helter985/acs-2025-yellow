@@ -11,11 +11,11 @@ class ItemCreate(BaseModel):
 class ItemUpdate(BaseModel):
     name: Optional[str] = None
     price: Optional[int] = None
-    transaction_id_algorand: Optional[str] = None
 
 
 class ItemOut(BaseModel):
     id: str
     name: str
     price: int
-    transaction_id_algorand: Optional[str] = None
+
+

@@ -12,14 +12,12 @@ class ItemService:
             item = ItemModel(
                 name=item_data.name,
                 price=item_data.price,
-                transaction_id_algorand=item_data.transaction_id_algorand
             )
             await item.save()
             return ItemOut(
                 id=str(item.id),
                 name=item.name,
                 price=item.price,
-                transaction_id_algorand=item.transaction_id_algorand
             )
         except Exception as e:
             raise HTTPException(status_code=400, detail=str(e))
@@ -33,7 +31,6 @@ class ItemService:
             id=str(item.id),
             name=item.name,
             price=item.price,
-            transaction_id_algorand=item.transaction_id_algorand
         )
     
     @staticmethod
@@ -44,7 +41,6 @@ class ItemService:
                 id=str(item.id),
                 name=item.name,
                 price=item.price,
-                transaction_id_algorand=item.transaction_id_algorand
             ) for item in items
         ]
     
@@ -63,7 +59,6 @@ class ItemService:
             id=str(item.id),
             name=item.name,
             price=item.price,
-            transaction_id_algorand=item.transaction_id_algorand
         )
     
     @staticmethod
@@ -73,3 +68,4 @@ class ItemService:
             raise HTTPException(status_code=404, detail="Item not found")
         await item.delete()
         return True
+

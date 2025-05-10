@@ -4,8 +4,8 @@ from app.core.config import settings
 from beanie import init_beanie
 from motor.motor_asyncio import AsyncIOMotorClient
 
-# from app.models.user_model import UserModel
-# from app.api.router import router
+from app.models.item_model import ItemModel
+from app.api.router import router
 
 
 # print("MONGO_CONNECTION_STRING: ", settings.MONGO_CONNECTION_STRING)
@@ -23,10 +23,7 @@ async def lifespan(app: FastAPI):
     await init_beanie(
         database=db,
         document_models = [
-            UserModel,
-            ElectionModel,
-            CandidateModel,
-            VoteModel
+            ItemModel
         ]
     )
     print("Connected to MongoDB successfully.")
@@ -42,7 +39,4 @@ app = FastAPI(
 
 
 app.include_router(router, prefix=settings.API_V1_STR)
-
-
-
 
