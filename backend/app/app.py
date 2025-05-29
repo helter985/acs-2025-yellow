@@ -18,7 +18,7 @@ async def lifespan(app: FastAPI):
     '''
     
     db_client = AsyncIOMotorClient(settings.MONGO_CONNECTION_STRING)
-    db = db_client.secuvote
+    db = db_client.pricepulse
 
     await init_beanie(
         database=db,
