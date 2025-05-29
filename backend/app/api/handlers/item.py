@@ -4,10 +4,10 @@ from app.services.item_service import ItemService
 from app.models.item_model import ItemModel
 from pymongo import errors
 
-item_router = APIRouter()
+item_router = APIRouter(prefix="/items")
 
 
-@item_router.get("/item/{id}", summary="Get item by id", response_model=ItemOut)
+@item_router.get("/{id}", summary="Get item by id", response_model=ItemOut)
 async def get_item(id: str):
     item = await ItemService.get_item_by_id(id)
     if not item:
@@ -18,7 +18,7 @@ async def get_item(id: str):
     return item
 
 
-@item_router.get("/item/barcode/{barcode}", summary="Get item by barcode", response_model=ItemOut)
+@item_router.get("/{barcode}", summary="Get item by barcode", response_model=ItemOut)
 async def get_item_by_barcode(barcode: str):
     item = await ItemService.get_item_by_barcode(barcode)
     if not item:
@@ -29,7 +29,7 @@ async def get_item_by_barcode(barcode: str):
     return item
 
 
-@item_router.get("/items", summary="Show all items", response_model=list[ItemOut])
+@item_router.get("/", summary="Show all items", response_model=list[ItemOut])
 async def get_items():
     try:
         return await ItemService.get_items()
