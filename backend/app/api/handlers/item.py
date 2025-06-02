@@ -8,7 +8,7 @@ item_router = APIRouter(prefix="/items")
 
 
 @item_router.get("/{id}", summary="Get item by id", response_model=ItemOut)
-async def get_item(id: str):
+async def get_item_by_id(id: str):
     item = await ItemService.get_item_by_id(id)
     if not item:
         raise HTTPException(

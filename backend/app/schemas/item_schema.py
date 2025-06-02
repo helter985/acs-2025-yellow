@@ -7,6 +7,7 @@ class ItemCreate(BaseModel):
     price: int
     barcode: str
 
+
 class ItemUpdate(BaseModel):
     name: Optional[str] = None
     price: Optional[int] = None

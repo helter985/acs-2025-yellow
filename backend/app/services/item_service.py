@@ -61,7 +61,8 @@ class ItemService:
                 barcode=str(item.barcode),
             ) for item in items
         ]
-    
+        
+''' 
     @staticmethod
     async def update_item(id: str, item_data: ItemUpdate) -> ItemOut:
         item = await ItemModel.find_one(ItemModel.id == ObjectId(id))
@@ -88,3 +89,4 @@ class ItemService:
         await item.delete()
         return True
 
+'''
