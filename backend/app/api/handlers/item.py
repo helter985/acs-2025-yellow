@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException, status, Depends, Query
+from fastapi import APIRouter, HTTPException, status, Depends
 from app.schemas.item_schema import  ItemOut, ItemCreate
 from app.services.item_service import ItemService
 from app.models.item_model import ItemModel
