@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException, status, Depends
+from fastapi import APIRouter, HTTPException, status, Depends, Query
 from app.schemas.item_schema import  ItemOut, ItemCreate
 from app.services.item_service import ItemService
 from app.models.item_model import ItemModel
@@ -18,7 +18,7 @@ async def get_item(id: str):
     return item
 
 
-@item_router.get("/{barcode}", summary="Get item by barcode", response_model=ItemOut)
+@item_router.get("/barcode/{barcode}", summary="Get item by barcode", response_model=ItemOut)
 async def get_item_by_barcode(barcode: str):
     item = await ItemService.get_item_by_barcode(barcode)
     if not item:
