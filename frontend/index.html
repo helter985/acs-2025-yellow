@@ -2,23 +2,37 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PricePulse - Buscar Productos</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Buscar Productos</h1>
+  <div class="container">
+    <h1>🛍️ PricePulse</h1>
 
-  <div class="search-container">
-    <input type="text" id="idInput" placeholder="Buscar por ID">
-    <button onclick="buscarPorId()">Buscar por ID</button>
+    <div class="search-container">
+      <div class="input-group">
+        <input type="text" id="idInput" placeholder="Buscar por ID del producto">
+        <button class="btn-primary" onclick="buscarPorId()">Buscar</button>
+      </div>
 
-    <input type="text" id="barcodeInput" placeholder="Buscar por Código de Barras">
-    <button onclick="buscarPorCodigo()">Buscar por Código</button>
+      <div class="input-group">
+        <input type="text" id="barcodeInput" placeholder="Buscar por código de barras">
+        <button class="btn-primary" onclick="buscarPorCodigo()">Buscar</button>
+      </div>
+
+      <button class="btn-secondary" onclick="resetearBusqueda()">🔄 Mostrar Todos</button>
+    </div>
+
+    <div class="loading" id="loading">
+      Cargando productos...
+    </div>
 
     <div class="error" id="errorMsg"></div>
-  </div>
+    <div class="success" id="successMsg"></div>
 
-  <div class="results" id="resultados"></div>
+    <div class="results" id="resultados"></div>
+  </div>
 
   <script src="script.js"></script>
 </body>
