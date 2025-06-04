@@ -4,7 +4,7 @@ from pydantic import Field
 
 class ItemModel(Document):
     name: str
-    price: int
+    price: float
     barcode: str
 
     def __repr__(self) -> str:
