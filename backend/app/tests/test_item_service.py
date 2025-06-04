@@ -1,26 +1,18 @@
 import pytest
-from unittest.mock import Mock, patch, AsyncMock
-from app.services.item_service import ItemService
-from app.models.item_model import ItemModel
-from app.schemas.item_schema import ItemCreate, ItemOut, ItemUpdate
-from fastapi import HTTPException
+from unittest.mock import AsyncMock, patch
 from bson import ObjectId
+from app.services.item_service import ItemService
+from app.schemas.item_schema import ItemOut
 
-@pytest.fixture
-def mock_item():
-    item = Mock()
-    item.id = ObjectId()
-    item.name = "Coca Cola"
-    item.barcode = "1234567890123"
-    item.price = 1.99
-    return item
+@pytest.mark.asyncio
+async def test_get_item_by_id_returns_item(mock_item):
+    test_id = str(mock_item.id)
 
+    with patch("app.models.item_model.ItemModel.find_one", new=AsyncMock(return_value=mock_item)):
+        item_out = await ItemService.get_item_by_id(test_id)
 
-@pytest.fixture
-def mock_item_out(mock_item):
-    return ItemOut(
-        id=str(mock_item.id),
-        name=mock_item.name,
-        barcode=mock_item.barcode,
-        price=mock_item.price
-    )
+    assert isinstance(item_out, ItemOut)
+    assert item_out.id == test_id
+    assert item_out.name == mock_item.name
+    assert item_out.barcode == mock_item.barcode
+    assert item_out.price == mock_item.price

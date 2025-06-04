@@ -1,0 +1,40 @@
+import unittest
+import asyncio
+from motor.motor_asyncio import AsyncIOMotorClient
+from beanie import init_beanie
+
+# Importar tu modelo real, ajusta la ruta según tu proyecto
+from app.models.item_model import ItemModel
+
+class TestItemModel(unittest.IsolatedAsyncioTestCase):
+
+    async def asyncSetUp(self):
+        # Conectar con MongoDB local y base de datos test
+        client = AsyncIOMotorClient("mongodb://localhost:27017")
+        db = client["test_database"]
+
+        # Inicializar Beanie con el modelo
+        await init_beanie(database=db, document_models=[ItemModel])
+
+        # (Opcional) Limpiar colección antes de cada test
+        await db[ItemModel.Settings.name].delete_many({})
+
+    async def test_item_model_creation(self):
+        item = ItemModel(name="Coca Cola 600ml", price=1200, barcode="7790895001234")
+        await item.insert()  # Inserta en Mongo
+
+        # Recuperar desde Mongo para validar inserción
+        found = await ItemModel.find_one(ItemModel.barcode == "7790895001234")
+
+        self.assertIsNotNone(found)
+        self.assertEqual(found.name, "Coca Cola 600ml")
+        self.assertEqual(found.price, 1200)
+        self.assertEqual(found.barcode, "7790895001234")
+
+    async def test_repr_method(self):
+        item = ItemModel(name="Galletas Oreo", price=800, barcode="0123456789012")
+        expected_repr = "<Item Galletas Oreo>"
+        self.assertEqual(repr(item), expected_repr)
+
+if __name__ == "__main__":
+    unittest.main()
