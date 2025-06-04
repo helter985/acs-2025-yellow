@@ -1,0 +1,43 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 2rem;
+  background-color: #f5f5f5;
+}
+
+h1 {
+  text-align: center;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+input, button {
+  padding: 10px;
+  font-size: 1rem;
+}
+
+button {
+  cursor: pointer;
+}
+
+.results {
+  margin-top: 2rem;
+}
+
+.item {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+}
+
+.error {
+  color: red;
+  margin-top: 1rem;
+}

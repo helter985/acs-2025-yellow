@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>PricePulse - Buscar Productos</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Buscar Productos</h1>
+
+  <div class="search-container">
+    <input type="text" id="idInput" placeholder="Buscar por ID">
+    <button onclick="buscarPorId()">Buscar por ID</button>
+
+    <input type="text" id="barcodeInput" placeholder="Buscar por Código de Barras">
+    <button onclick="buscarPorCodigo()">Buscar por Código</button>
+
+    <div class="error" id="errorMsg"></div>
+  </div>
+
+  <div class="results" id="resultados"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
