@@ -119,25 +119,9 @@ Entrada: "ZZZ000"
 Resultado esperado: Se muestra mensaje "Producto no encontrado"
 
 
-#### User Story 2: Ver precios más recientes
-TestCase-2.1 - Mostrar fecha de última actualización
-Precondiciones: El usuario visualiza un producto
 
-Pasos:
-Ingresar al detalle de producto
-Resultado esperado: Se muestra la fecha de última actualización del precio
-
-TestCase-2.2 - Validar actualización automática
-Precondiciones: La lista de precios fue actualizada en el servidor
-
-Pasos:
-Abrir la app con conexión a Internet
-Esperar a que se cargue la información
-Resultado esperado: Se muestran los precios actualizados automáticamente
-
-
-#### User Story 3: Cargar listas de precios
-TestCase-3.1 - Subir lista de precios (formato válido)
+#### User Story 2: Cargar listas de precios
+TestCase-2.1 - Subir lista de precios (formato válido)
 Precondiciones: El usuario tiene acceso de administrador
 
 Pasos:
@@ -145,7 +129,7 @@ Subir archivo Excel válido
 Presionar "Cargar"
 Resultado esperado: Mensaje "Lista cargada exitosamente"
 
-TestCase-3.2 - Subir lista de precios (formato inválido)
+TestCase-2.2 - Subir lista de precios (formato inválido)
 
 Pasos:
 Subir un archivo con formato incorrecto o datos faltantes
