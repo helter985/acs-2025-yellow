@@ -1,51 +1,54 @@
 # PricePulse
 
 
-## 1.Introduction
+## 1. Introducción
 
-The project PricePulse is a software that aims to provide updated prices to the vendors of the distribuitor in real time.
+El proyecto **PricePulse** es un software que tiene como objetivo proporcionar precios actualizados en tiempo real a los vendedores del distribuidor.
 
-## 1.1 Purpose
+## 1.1 Propósito
 
-The purpose of this document is to outline the requirements for the app that the vendors will be using daily. This document will be used by all stakeholders, developers and testers.
+El propósito de este documento es describir los requisitos para la aplicación que los vendedores utilizarán a diario. Este documento será utilizado por todas las partes interesadas, desarrolladores y testers.
 
-## 1.2 Scope
+## 1.2 Alcance
 
-The scope of this project is limited to the testing of the features described in the succeding sections of this document.
-Non-functional testing like stress, performance is beyond scope of this project.
-Automation testing is beyond scope.
-Functional testing and a basic external interface are in scope and need to be tested.
+El alcance de este proyecto se limita a las pruebas de las funcionalidades descritas en las secciones siguientes de este documento.  
+Las pruebas no funcionales como las de estrés o rendimiento están fuera del alcance del proyecto.  
+Las pruebas automatizadas también están fuera del alcance.  
+Las pruebas funcionales y una interfaz externa básica están dentro del alcance y deben ser evaluadas.
 
-## 1.3 Definitions, Acronyms, and Abbrevations 
-| Abbreviation | Word     |
-|--------------|----------|
-| A            | Admin    |
-| D            | Distributor|
-| D            | Developer|
-| S            |Stakeholder|
-| T            | Tester   |  
-| V            | Vendor   |
-## 2. Requirements
+## 1.3 Definiciones, Acrónimos y Abreviaturas
 
-### 2.1 Roles Description
+| Abreviación | Significado     |
+|-------------|-----------------|
+| A           | Administrador   |
+| D           | Distribuidor    |
+| D           | Desarrollador   |
+| S           | Stakeholder     |
+| T           | Tester (Evaluador) |
+| V           | Vendedor        |
 
-| Role         | Description                                                                 |
-|--------------|-----------------------------------------------------------------------------|
-| **Vendor**   | User of the mobile application. Queries product prices in real time.        |
-| **Distributor** | Provides updated product data to be consumed by the app.                |
-| **Admin**    | Manages user access and system configurations.                              |
-| **Tester**   | Validates that the app behaves according to the specified requirements.     |
-| **Developer**| Implements and maintains app features based on stakeholder input.           |
+## 2. Requisitos
 
-### 2.2 Features per Role
+### 2.1 Descripción de Roles
 
-| Role         | Features                                                                                 |
-|--------------|------------------------------------------------------------------------------------------|
-| **Vendor**   | - Search product by code or name  <br> - View updated prices in real time                |
-| **Admin**    | - Manage vendor accounts  <br> - Reset passwords  <br> - Monitor system status           |
-| **Tester**   | - Execute functional test cases  <br> - Report bugs  <br> - Verify bug fixes             |
-| **Developer**| - Develop backend API  <br> - Implement front-end components  <br> - Fix issues          |
-| **Distributor** | - Feed price updates to the system  <br> - Ensure data accuracy                      |
+| Rol              | Descripción                                                                 |
+|------------------|-----------------------------------------------------------------------------|
+| **Vendedor**     | Usuario de la aplicación móvil. Consulta precios de productos en tiempo real. |
+| **Distribuidor** | Proporciona datos actualizados de productos que serán consumidos por la app. |
+| **Administrador**| Gestiona el acceso de usuarios y la configuración del sistema.              |
+| **Tester**       | Valida que la aplicación se comporte según los requisitos especificados.     |
+| **Desarrollador**| Implementa y mantiene las funcionalidades de la app basándose en las necesidades de los stakeholders. |
+
+### 2.2 Funcionalidades por Rol
+
+| Rol              | Funcionalidades                                                                             |
+|------------------|---------------------------------------------------------------------------------------------|
+| **Vendedor**     | - Buscar productos por código o nombre  <br> - Ver precios actualizados en tiempo real     |
+| **Administrador**| - Gestionar cuentas de vendedores  <br> - Restablecer contraseñas  <br> - Monitorizar el estado del sistema |
+| **Tester**       | - Ejecutar casos de prueba funcionales  <br> - Reportar errores  <br> - Verificar correcciones |
+| **Desarrollador**| - Desarrollar la API del backend  <br> - Implementar componentes del frontend  <br> - Corregir errores |
+| **Distribuidor** | - Cargar actualizaciones de precios al sistema  <br> - Asegurar la precisión de los datos |
+
 
 ### 2.3 User Stories 
 #### User Story 1: Buscar productos por nombre o código
