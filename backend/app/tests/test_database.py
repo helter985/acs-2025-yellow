@@ -9,7 +9,7 @@ from app.models.item_model import ItemModel
 
 class TestDatabase(unittest.IsolatedAsyncioTestCase):
     async def asyncSetUp(self):
-        self.mongo_url = ("mongodb://172.17.0.3:27017")
+        self.mongo_url = ("mongodb://localhost:27017")
         self.db_name = "test_database"
         
         try:
