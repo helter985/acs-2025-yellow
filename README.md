@@ -63,7 +63,7 @@ Functional testing and a basic external interface are in scope and need to be te
 - **Escenario 2 (Negativo):**  
   **Dado que** el vendedor introduce un código incorrecto,  
   **cuando** presiona buscar,  
-  **entonces** se muestra un mensaje de “Producto no encontrado”.
+  **entonces** se muestra un mensaje de "Producto no encontrado".
 
 ---
 
@@ -90,7 +90,7 @@ Functional testing and a basic external interface are in scope and need to be te
 
 - Poder subir archivos de lista de precios en formatos como Excel (.xlsx, .xls) y CSV.  
 - Validación de formato y datos (p. ej. columnas requeridas: código, nombre, precio).  
-- Mostrar un mensaje de “Actualización exitosa” o, en caso de error, “Error al procesar el archivo” con detalles.  
+- Mostrar un mensaje de "Actualización exitosa" o, en caso de error, "Error al procesar el archivo" con detalles.  
 - Registro de fecha y usuario que realizó la carga.
 
 
@@ -102,7 +102,7 @@ Precondiciones: El usuario está en la pantalla de búsqueda
 
 Pasos:
 Ingresar un nombre o código válido en el campo de búsqueda
-Presionar el botón “Buscar”.
+Presionar el botón "Buscar".
 Entrada: "123ABC" o "Coca Cola"
 Resultado esperado: Se muestra la información del producto con su precio
 
@@ -111,9 +111,9 @@ Precondiciones: El usuario está en la pantalla de búsqueda
 
 Pasos:
 Ingresar un código inválido
-Presionar el botón “Buscar”
+Presionar el botón "Buscar"
 Entrada: "ZZZ000"
-Resultado esperado: Se muestra mensaje “Producto no encontrado”
+Resultado esperado: Se muestra mensaje "Producto no encontrado"
 
 
 #### User Story 2: Ver precios más recientes
@@ -139,8 +139,8 @@ Precondiciones: El usuario tiene acceso de administrador
 
 Pasos:
 Subir archivo Excel válido
-Presionar “Cargar”
-Resultado esperado: Mensaje “Lista cargada exitosamente”
+Presionar "Cargar"
+Resultado esperado: Mensaje "Lista cargada exitosamente"
 
 TestCase-3.2 - Subir lista de precios (formato inválido)
 
@@ -188,4 +188,59 @@ La especificación completa de la API está definida utilizando el formato **Ope
 Las respuestas incluirán códigos HTTP estándar y mensajes detallados en caso de errores (por ejemplo, `400 Bad Request`, `500 Internal Server Error`).
 
 Para más detalles sobre los parámetros de las peticiones, formatos de respuesta y ejemplos de uso, consultar el contrato de la API mencionado anteriormente.
+
+### 4. Running the Project
+
+#### 4.1 Backend Setup
+
+1. Navigate to the backend directory:
+   ```bash
+   cd backend
+   ```
+
+2. Create and activate a virtual environment (recommended):
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Linux/Mac
+   # or
+   .\venv\Scripts\activate  # On Windows
+   ```
+
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. Run the application:
+   ```bash
+   python -m app.main
+   ```
+
+5. Run tests (optional):
+   ```bash
+   make test-item  # Run item model tests
+   make test-service  # Run service tests
+   ```
+
+#### 4.2 Frontend Setup
+
+1. Navigate to the frontend directory:
+   ```bash
+   cd frontend
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+The application should now be running with:
+- Backend API at: http://localhost:8000
+- Frontend at: http://localhost:3000
+
 
