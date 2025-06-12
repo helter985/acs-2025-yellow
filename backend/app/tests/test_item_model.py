@@ -2,21 +2,19 @@ import unittest
 import asyncio
 from motor.motor_asyncio import AsyncIOMotorClient
 from beanie import init_beanie
-
+from mongomock_motor import AsyncMongoMockClient
 
 from app.models.item_model import ItemModel
 
 class TestItemModel(unittest.IsolatedAsyncioTestCase):
 
     async def asyncSetUp(self):
-        # Conectar con MongoDB local y base de datos test
-        client = AsyncIOMotorClient("mongodb://localhost:27017")
-        db = client["test_database"]
-
-        await init_beanie(database=db, document_models=[ItemModel])
-
+        # Crear un cliente mock de MongoDB
+        self.client = AsyncMongoMockClient()
+        self.db = self.client["test_database"]
         
-        await db[ItemModel.Settings.name].delete_many({})
+        # Inicializar Beanie con la base de datos mock
+        await init_beanie(database=self.db, document_models=[ItemModel])
 
     async def test_item_model_creation(self):
         item = ItemModel(name="Coca Cola 600ml", price=1200, barcode="7790895001234")

@@ -4,16 +4,17 @@ from httpx import AsyncClient, ASGITransport
 from fastapi import status
 from motor.motor_asyncio import AsyncIOMotorClient
 from beanie import init_beanie
+from mongomock_motor import AsyncMongoMockClient
 from app.models.item_model import ItemModel
 from app.main import app
 
 
 class TestItemHandlers(unittest.IsolatedAsyncioTestCase):
     async def asyncSetUp(self):
-        self.db_client = AsyncIOMotorClient("mongodb://localhost:27017")
-        db = self.db_client["test_database"]
-        await init_beanie(database=db, document_models=[ItemModel])
-        await db[ItemModel.Settings.name].delete_many({})
+        # Crear un cliente mock de MongoDB
+        self.db_client = AsyncMongoMockClient()
+        self.db = self.db_client["test_database"]
+        await init_beanie(database=self.db, document_models=[ItemModel])
 
         self.transport = ASGITransport(app=app)
 

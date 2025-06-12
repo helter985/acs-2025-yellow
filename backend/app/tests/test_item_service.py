@@ -3,6 +3,7 @@ import asyncio
 from motor.motor_asyncio import AsyncIOMotorClient
 from beanie import init_beanie
 from bson import ObjectId
+from mongomock_motor import AsyncMongoMockClient
 
 from app.models.item_model import ItemModel
 from app.services.item_service import ItemService
@@ -17,13 +18,12 @@ class TestItemService(unittest.IsolatedAsyncioTestCase):
 
     async def asyncSetUp(self):
         print("\n=== Iniciando pruebas de ItemService ===")
-        self.client = AsyncIOMotorClient("mongodb://localhost:27017")
+        # Crear un cliente mock de MongoDB
+        self.client = AsyncMongoMockClient()
         self.db = self.client["test_database"]
         await init_beanie(database=self.db, document_models=[ItemModel])
-        await self.db[ItemModel.Settings.name].delete_many({})
 
     async def asyncTearDown(self):
-        await self.db[ItemModel.Settings.name].delete_many({})
         self.client.close()
         print("=== Pruebas finalizadas ===\n")
 
